@@ -9,11 +9,10 @@ expressApp.use(bodyParser.json());
 expressApp.use(expressValidator());
 const app = routes(expressApp);
 
-app.use('*', (req, res) => {
-  res
-    .status(404)
+app.use('/', (req, res) => {
+  res.status(200)
     .json({
-      message: 'welcome to the beginning of nothingness',
+      message: 'Express cloud function',
     });
 });
 

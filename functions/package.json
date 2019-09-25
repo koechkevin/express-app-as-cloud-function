@@ -1,20 +1,20 @@
 {
-  "name": "express-template",
-  "version": "1.0.0",
-  "main": "dist/index.js",
-  "license": "MIT",
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
   "scripts": {
-    "transpile": "babel src --out-dir functions/dist -s",
-    "build": "NODE_ENV=production rm -rf functions/dist && yarn transpile",
-    "start": "NODE_ENV=production node functions/dist/index.js",
-    "coveralls": "cat ./coverage/lcov.info | node node_modules/.bin/coveralls",
-    "lint": "./node_modules/.bin/eslint src",
-    "test": "NODE_ENV=test jest --forceExit --coverage",
-    "serve:dev": "yarn build && firebase serve --only functions,hosting",
-    "start:dev": "NODE_ENV=development nodemon --exec babel-node src/index.js"
+    "serve": "firebase serve --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "8"
   },
   "dependencies": {
     "@babel/polyfill": "^7.4.4",
+    "firebase-admin": "^8.0.0",
+    "firebase-functions": "^3.1.0",
     "@babel/register": "^7.4.4",
     "body-parser": "^1.19.0",
     "dotenv": "^8.0.0",
@@ -26,6 +26,7 @@
     "sequelize-cli": "^5.5.0"
   },
   "devDependencies": {
+    "firebase-functions-test": "^0.1.6",
     "@babel/cli": "^7.5.0",
     "@babel/core": "^7.5.4",
     "@babel/node": "^7.5.0",
@@ -37,5 +38,6 @@
     "eslint-plugin-import": "^2.18.0",
     "jest": "^24.8.0",
     "nodemon": "^1.19.1"
-  }
+  },
+  "private": true
 }

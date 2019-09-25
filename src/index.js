@@ -6,7 +6,12 @@ import app from './app';
 env.config();
 const port = process.env.PORT || 3000;
 const server = http.createServer(app);
-server.listen(port, () => {
-  console.log(process.env.NODE_ENV);
-  console.log(`Application is running on http://localhost:${port}`);
-});
+
+if (process.env.NODE_ENV === 'development') {
+  server.listen(port, () => {
+    // eslint-disable-next-line no-console
+    console.log(`Application is running on http://localhost:${port}`);
+  });
+}
+
+module.exports = app;

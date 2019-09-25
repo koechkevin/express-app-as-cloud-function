@@ -7,7 +7,7 @@ const routes = (app) => {
   routers.forEach((route) => {
     router.use(route);
   });
-  app.use('/api', router);
+  app.use('', router);
   return app;
 };
 
